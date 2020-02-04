@@ -1,0 +1,18 @@
+plugins {
+    id 'java'
+}
+
+group 'com.boykait'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+}
