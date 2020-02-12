@@ -6,8 +6,34 @@
 <mapper namespace="com.boykait.user.mapper.UserMapper">
     <select id="listUsers" resultType="com.boykait.user.model.User">
       SELECT
-        id,user_name as userName, password,gender,age,telephone,email,address
+        id,user_name AS userName, password,gender,age,telephone,email,address
       FROM tbl_user;
     </select>
 
+    <select id="getUserById" resultType="com.boykait.user.model.User" parameterType="String">
+      SELECT
+        id,user_name AS userName, password,gender,age,telephone,email,address
+      FROM tbl_user WHERE id=#{id};
+    </select>
+    <insert id="saveUser" parameterType="com.boykait.user.model.User">
+        INSERT into tbl_user
+        (user_name, password,gender,age,telephone,email,address)
+        VALUES (
+         #{userName},#{password},#{gender},#{age},#{telephone},#{email},#{address}
+        )
+    </insert>
+    <update id="updateUser" parameterType="com.boykait.user.model.User">
+        UPDATE tbl_user SET
+        user_name=#{userName},
+        password=#{password},
+        gender=#{gender},
+        age=#{age},
+        telephone=#{telephone},
+        email=#{email},
+        address=#{address}
+        Where id=#{id}
+    </update>
+    <delete id="deleteUser" parameterType="String">
+        DELETE FROM tbl_user WHERE id=#{id}
+    </delete>
 </mapper>
